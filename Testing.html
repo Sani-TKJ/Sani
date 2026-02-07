@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Basuri Telolet</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+
+    background-image:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("https://raw.githubusercontent.com/Sani-TKJ/Sani/main/IMG-20250519-WA0155.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: rgba(0,0,0,0.5);
+            padding: 25px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #222;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .stop {
+            margin-top: 15px;
+            width: 100%;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+        }
+
+        footer {
+            margin-top: 15px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+        /* ===== MODE LANDSCAPE ===== */
+@media screen and (orientation: landscape) {
+    body {
+        padding: 8px;
+    }
+
+    .card {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .buttons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🚌 BASURI TELOLET</h1>
+    <p>Klik tombol untuk membunyikan klakson</p>
+
+    <div class="buttons">
+       <button onclick="play(1)">Basuri 1</button>
+       <button onclick="play(2)">Basuri 2</button>
+       <button onclick="play(3)">Basuri 3</button>
+       <button onclick="play(4)">Basuri 4</button>
+       <button onclick="play(5)">Basuri 5</button>
+       <button onclick="play(6)">Basuri 6</button>
+       <button onclick="play(7)">Basuri 7</button>
+       <button onclick="play(8)">Basuri 8</button>
+       <button onclick="play(9)">Basuri 9</button>
+       <button onclick="play(10)">Basuri 10</button>
+       <button onclick="play(11)">Basuri 11</button>
+       <button onclick="play(12)">Basuri 12</button>
+    </div>
+
+    <button class="stop" onclick="stopSound()">STOP</button>
+
+    <footer>
+        © Game Basuri
+    </footer>
+</div>
+
+<script>
+let sound;
+
+const sounds = {
+    1: "https://raw.githubusercontent.com/Sani-TKJ/Sani/6a4df3a541fc4a2dfba6e9f17a03f6beb0310e1c/Al%20faizi.mp3",
+    2: "https://raw.githubusercontent.com/Sani-TKJ/Sani/7bb02ead57f2677ee43d517d0deef4ff122ca4b3/sekar%20(mp3cut.net).mp3",
+    3: "https://raw.githubusercontent.com/Sani-TKJ/Sani/1ee59d59f03151cb158855d4d0b55a86fd9e4486/KLAKSON%201.mp3",
+    4: "https://raw.githubusercontent.com/Sani-TKJ/Sani/1ee59d59f03151cb158855d4d0b55a86fd9e4486/KLAKSON%201.mp3"
+};
+
+function play(no) {
+    if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+    }
+    sound = new Audio(sounds[no]);
+    sound.play();
+}
+
+function stopSound() {
+    if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+    }
+}
+function goFullLandscape() {
+    // Fullscreen
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+
+    // Coba kunci landscape
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(() => {});
+    }
+}
+</script>
+
+</body>
+</html>
